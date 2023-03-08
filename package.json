@@ -10,6 +10,7 @@
     "serverstart": "DEBUG=bibliothequeMunicipale:* npm run devstart"
   },
   "dependencies": {
+    "async": "^3.2.4",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
     "dotenv": "^16.0.3",
@@ -21,10 +22,10 @@
     "node-sass-middleware": "^1.0.1"
   },
   "devDependencies": {
-    "nodemon": "^2.0.21",
     "eslint": "^8.34.0",
     "eslint-config-prettier": "^8.6.0",
     "eslint-plugin-prettier": "^4.2.1",
+    "nodemon": "^2.0.21",
     "prettier": "^2.8.4",
     "prettier-eslint-cli": "^7.1.0"
   }

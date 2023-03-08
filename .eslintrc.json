@@ -1,6 +1,6 @@
 {
   "root": true,
-  "ignorePatterns": ["**/*.html"],
+  "ignorePatterns": ["**/*.html", "populatedb.js"],
   "rules": {
     "indent": ["error", 2],
     "linebreak-style": ["error", "unix"],

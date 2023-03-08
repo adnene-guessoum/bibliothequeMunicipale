@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const InstanceLivreSchema = new Schema({
-  livre: { type: Schema.Types.ObectId, ref: 'Livre', required: true },
+  livre: { type: Schema.Types.ObjectId, ref: 'Livre', required: true },
   version_papier: { type: String, required: true },
   statut: {
     type: String,
