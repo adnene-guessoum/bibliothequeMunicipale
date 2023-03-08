@@ -9,15 +9,18 @@
     "no-unused-vars": [
       "error",
       {
-        "argsIgnorePattern": "[iI]gnored",
-        "varsIgnorePattern": "[iI]gnored"
+        "argsIgnorePattern": "next"
       }
     ]
   },
   "plugins": ["prettier"],
   "extends": ["prettier"],
+  "env": {
+    "node": true,
+    "es6": true
+  },
   "parserOptions": {
-    "ecmaVersion": 6,
+    "ecmaVersion": 8,
     "sourceType": "module"
   }
 }
