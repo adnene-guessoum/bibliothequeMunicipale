@@ -1,4 +1,6 @@
 const Genre = require('../models/genre');
+const Livre = require('../models/livre');
+const async = require('async');
 
 exports.liste_genre = (req, res, next) => {
   Genre.find()
@@ -14,8 +16,36 @@ exports.liste_genre = (req, res, next) => {
     });
 };
 
-exports.genre_detail = (req, res) => {
-  res.send(`TODO: page detail genre: ${req.params.id}`);
+exports.genre_detail = (req, res, next) => {
+  async.parallel(
+    {
+      genre(cb) {
+        Genre.findById(req.params.id).exec(cb);
+      },
+
+      genre_livres(cb) {
+        Livre.find({ genre: req.params.id }).exec(cb);
+      }
+    },
+    (err, results) => {
+      if (err) {
+        return next(err);
+      }
+      if (results.genre == null) {
+        // Pas de résultats
+        const err = new Error('Pas de Genre trouvé');
+        err.status = 404;
+        return next(err);
+      }
+
+      //Success
+      res.render('genre_detail', {
+        titre: 'Detail: Genre',
+        genre: results.genre,
+        genre_livres: results.genre_livres
+      });
+    }
+  );
 };
 
 exports.genre_create_get = (req, res) => {

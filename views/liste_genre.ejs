@@ -13,7 +13,11 @@
 					<li> Aucun genre de livres.</li>
 					<% } else { %>
 					<% for ( let genre of liste_genre) { %>
-					<li><a href= genre.url ><%= genre.genre %></a></li>
+					<li>
+						<a href= "<%= genre.url %>">
+							<%= genre.genre %>
+						</a>
+					</li>
 					<% } %>
 					<% } %>
 				</ul>
