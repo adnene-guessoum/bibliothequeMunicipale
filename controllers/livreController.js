@@ -50,8 +50,37 @@ exports.liste_livre = (req, res, next) => {
     });
 };
 
-exports.livre_detail = (req, res) => {
-  res.send(`TODO: page detail livre: ${req.params.id}`);
+exports.livre_detail = (req, res, next) => {
+  async.parallel(
+    {
+      livre(cb) {
+        Livre.findById(req.params.id)
+          .populate('auteur')
+          .populate('genre')
+          .exec(cb);
+      },
+      livre_instance(cb) {
+        InstanceLivre.find({ livre: req.params.id }).exec(cb);
+      }
+    },
+    (err, results) => {
+      if (err) {
+        return next(err);
+      }
+      if (results.livre == null) {
+        // Pas de résultat
+        const err = new Error('Pas trouvé le livre');
+        err.status = 404;
+        return next(err);
+      }
+      // succes
+      res.render('livre_detail', {
+        titre: results.livre.titre,
+        livre: results.livre,
+        instances_livre: results.livre_instance
+      });
+    }
+  );
 };
 
 exports.livre_create_get = (req, res) => {
