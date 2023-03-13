@@ -1,7 +1,17 @@
 const InstanceLivre = require('../models/instancelivre');
 
-exports.liste_instancelivre = (req, res) => {
-  res.send('TODO: retourner liste livres physiques');
+exports.liste_instancelivre = (req, res, next) => {
+  InstanceLivre.find()
+    .populate('livre')
+    .exec(function (err, liste_instances_livre) {
+      if (err) {
+        return next(err);
+      }
+      res.render('liste_instancelivre', {
+        titre: 'Liste des exemplaires',
+        liste_instancelivre: liste_instances_livre
+      });
+    });
 };
 
 exports.instancelivre_detail = (req, res) => {

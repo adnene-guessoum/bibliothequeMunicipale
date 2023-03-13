@@ -1,0 +1,40 @@
+<%- include("partials/header") %>
+<body>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-sm-2">
+				<%- include("partials/sidebar") %>
+
+			</div>
+			<div class="col-sm-10">
+				<h1><%= titre %></h1>
+				<ul>
+					<% if (liste_instancelivre.length == 0) { %>
+					<li> Il n'y a pas d'exemplaires de ce livre dans notre bibliothèque.</li>
+					<% } else { %>
+					<% for ( let exemplaire of liste_instancelivre) { %>
+					<li>
+						<a href= exemplaire.url >
+							<%= exemplaire.livre.titre %> : <%= exemplaire.imprimé %> -
+							<% if (exemplaire.statut == "Disponible")  { %>
+							<span class = "text-success"><%= exemplaire.statut %></span>
+							<% } else if (exemplaire.statut == "En Maintenance") { %>
+							<span class = "text-danger"><%= exemplaire.statut %></span>
+							<% } else { %>
+							<span class = "text-warning"><%= exemplaire.statut %></span>
+							<% } %>
+						</a>
+
+							<% if (exemplaire.statut != "Disponible")  { %>
+							<span>retour prévu le : <%= exemplaire.retour_prevu %></span>
+							<% } %>
+					</li>
+					<% } %>
+					<% } %>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>
