@@ -1,3 +1,6 @@
+# garbage
+.garbage/
+
 # Logs
 logs
 *.log
