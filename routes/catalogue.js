@@ -18,7 +18,7 @@ router.post('/livre/:id/delete', livre_controller.livre_delete_post);
 router.get('/livre/:id/update', livre_controller.livre_update_get);
 router.post('/livre/:id/update', livre_controller.livre_update_post);
 router.get('/livre/:id', livre_controller.livre_detail);
-router.get('/livres', livre_controller.livre_liste);
+router.get('/livres', livre_controller.liste_livre);
 
 /// Routes auteur ///
 
@@ -29,7 +29,7 @@ router.post('/auteur/:id/delete', auteur_controller.auteur_delete_post);
 router.get('/auteur/:id/update', auteur_controller.auteur_update_get);
 router.post('/auteur/:id/update', auteur_controller.auteur_update_post);
 router.get('/auteur/:id', auteur_controller.auteur_detail);
-router.get('/auteurs', auteur_controller.auteur_liste);
+router.get('/auteurs', auteur_controller.liste_auteurs);
 
 /// Routes genre ///
 
@@ -40,7 +40,7 @@ router.post('/genre/:id/delete', genre_controller.genre_delete_post);
 router.get('/genre/:id/update', genre_controller.genre_update_get);
 router.post('/genre/:id/update', genre_controller.genre_update_post);
 router.get('/genre/:id', genre_controller.genre_detail);
-router.get('/genres', genre_controller.genre_liste);
+router.get('/genres', genre_controller.liste_genre);
 
 /// Routes instancelivre ///
 
@@ -69,7 +69,7 @@ router.post(
   instancelivre_controller.instancelivre_update_post
 );
 router.get('/instancelivre/:id', instancelivre_controller.instancelivre_detail);
-router.get('/instancelivres', instancelivre_controller.instancelivre_liste);
+router.get('/instancelivres', instancelivre_controller.liste_instancelivre);
 
 /// export router ///
 module.exports = router;
