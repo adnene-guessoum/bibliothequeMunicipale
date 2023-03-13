@@ -222,7 +222,7 @@ function createBookInstances(cb) {
           books[0],
           'London Gollancz, 2014.',
           false,
-          'Available',
+          'Disponible',
           callback
         );
       },
@@ -231,7 +231,7 @@ function createBookInstances(cb) {
           books[1],
           ' Gollancz, 2011.',
           false,
-          'Loaned',
+          'Emprunté',
           callback
         );
       },
@@ -249,7 +249,7 @@ function createBookInstances(cb) {
           books[3],
           'New York Tom Doherty Associates, 2016.',
           false,
-          'Available',
+          'Disponible',
           callback
         );
       },
@@ -258,7 +258,7 @@ function createBookInstances(cb) {
           books[3],
           'New York Tom Doherty Associates, 2016.',
           false,
-          'Available',
+          'Disponible',
           callback
         );
       },
@@ -267,7 +267,7 @@ function createBookInstances(cb) {
           books[3],
           'New York Tom Doherty Associates, 2016.',
           false,
-          'Available',
+          'Disponible',
           callback
         );
       },
@@ -276,7 +276,7 @@ function createBookInstances(cb) {
           books[4],
           'New York, NY Tom Doherty Associates, LLC, 2015.',
           false,
-          'Available',
+          'Disponible',
           callback
         );
       },
@@ -285,7 +285,7 @@ function createBookInstances(cb) {
           books[4],
           'New York, NY Tom Doherty Associates, LLC, 2015.',
           false,
-          'Maintenance',
+          'En Maintenance',
           callback
         );
       },
@@ -294,7 +294,7 @@ function createBookInstances(cb) {
           books[4],
           'New York, NY Tom Doherty Associates, LLC, 2015.',
           false,
-          'Loaned',
+          'Emprunté',
           callback
         );
       },

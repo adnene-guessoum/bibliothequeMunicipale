@@ -1,7 +1,38 @@
 const Livre = require('../models/livre');
+const Auteur = require('../models/auteur');
+const Genre = require('../models/genre');
+const InstanceLivre = require('../models/instancelivre');
 
+const async = require('async');
+
+// retourner page accueil avec compteurs
 exports.index = (req, res) => {
-  res.send('TODO: retourne page Accueil');
+  async.parallel(
+    {
+      livre_count(cb) {
+        Livre.countDocuments({}, cb);
+      },
+      livre_instance_count(cb) {
+        InstanceLivre.countDocuments({}, cb);
+      },
+      livre_instance_disponible_count(cb) {
+        InstanceLivre.countDocuments({ statut: 'Disponible' }, cb);
+      },
+      auteur_count(cb) {
+        Auteur.countDocuments({}, cb);
+      },
+      genre_count(cb) {
+        Genre.countDocuments({}, cb);
+      }
+    },
+    (err, results) => {
+      res.render('index', {
+        title: 'Accueil Bibliothèque Municipale',
+        error: err,
+        data: results
+      });
+    }
+  );
 };
 
 exports.liste_livre = (req, res) => {
