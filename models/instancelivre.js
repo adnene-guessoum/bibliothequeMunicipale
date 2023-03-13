@@ -1,4 +1,5 @@
 // reference à l'objet livre physique ("instance" emprunté, rendu, copies...)
+const { DateTime } = require('luxon');
 
 const mongoose = require('mongoose');
 
@@ -19,6 +20,13 @@ const InstanceLivreSchema = new Schema({
 // Virtuel url instanceLivre
 InstanceLivreSchema.virtual('url').get(function () {
   return `/catalogue/InstanceLivre/${this._id}`;
+});
+
+// Virtuel formattage date
+InstanceLivreSchema.virtual('date_retour_format').get(function () {
+  return DateTime.fromJSDate(this.retour_prevu)
+    .setLocale('fr')
+    .toLocaleString(DateTime.DATE_MED);
 });
 
 module.exports = mongoose.model('InstanceLivre', InstanceLivreSchema);

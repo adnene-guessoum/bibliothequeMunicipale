@@ -26,7 +26,7 @@
 						</a>
 
 							<% if (exemplaire.statut != "Disponible")  { %>
-							<span>retour prévu le : <%= exemplaire.retour_prevu %></span>
+							<span>retour prévu le : <%= exemplaire.date_retour_format %></span>
 							<% } %>
 					</li>
 					<% } %>

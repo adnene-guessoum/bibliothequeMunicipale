@@ -1,7 +1,17 @@
 const Genre = require('../models/genre');
 
-exports.liste_genre = (req, res) => {
-  res.send('TODO: retourner liste Genre');
+exports.liste_genre = (req, res, next) => {
+  Genre.find()
+    .sort([['genre', 'ascending']])
+    .exec(function (err, liste_genres) {
+      if (err) {
+        return next(err);
+      }
+      res.render('liste_genre', {
+        titre: 'Liste des Genres',
+        liste_genre: liste_genres
+      });
+    });
 };
 
 exports.genre_detail = (req, res) => {

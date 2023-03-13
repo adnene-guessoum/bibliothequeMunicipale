@@ -1,7 +1,17 @@
 const Auteur = require('../models/auteur');
 
-exports.liste_auteurs = (req, res) => {
-  res.send('TODO: retourner liste auteurs');
+exports.liste_auteurs = (req, res, next) => {
+  Auteur.find()
+    .sort([['nom_famille', 'ascending']])
+    .exec(function (err, liste_auteur) {
+      if (err) {
+        return next(err);
+      }
+      res.render('liste_auteurs', {
+        titre: 'Liste des Auteurs',
+        liste_auteurs: liste_auteur
+      });
+    });
 };
 
 exports.auteur_detail = (req, res) => {
