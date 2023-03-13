@@ -15,9 +15,11 @@ AuteurSchema.virtual('nom').get(function () {
   let nom_complet = '';
   if (this.prenom && this.nom_famille) {
     nom_complet = `${this.prenom} ${this.nom_famille}`;
+    return nom_complet;
   }
   if (this.prenom || this.nom_famille) {
     nom_complet = '';
+    return nom_complet;
   }
 
   return nom_complet;

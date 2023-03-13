@@ -27,7 +27,7 @@ exports.index = (req, res) => {
     },
     (err, results) => {
       res.render('index', {
-        title: 'Accueil Bibliothèque Municipale',
+        titre: 'Accueil Bibliothèque Municipale',
         error: err,
         data: results
       });
@@ -35,8 +35,19 @@ exports.index = (req, res) => {
   );
 };
 
-exports.liste_livre = (req, res) => {
-  res.send('TODO: retourner liste livres');
+exports.liste_livre = (req, res, next) => {
+  Livre.find({}, 'titre auteur')
+    .sort({ titre: 1 })
+    .populate('auteur')
+    .exec(function (err, liste_livres) {
+      if (err) {
+        return next(err);
+      }
+      res.render('liste_livre', {
+        titre: 'Liste des livres',
+        liste_livre: liste_livres
+      });
+    });
 };
 
 exports.livre_detail = (req, res) => {
